@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 * {
+
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
@@ -8,6 +10,24 @@
 body {
   background-color: #333456;
   color: #F8F8F8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 20px 0 0;
+}
+
+.game-container {
+  padding: 20px 30px;
+  position: relative;
+  margin: auto;
+  height: 350px;
+  width: 450px;
 }
 
 .figure-container {
@@ -20,4 +40,42 @@ body {
 .figure-part {
   stroke: #f4abc4;
   display: none;
+}
+
+.wrong-letters-containter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.wrong-letters-containter p {
+  margin: 0 0 5px;
+}
+.wrong-letters-containter span {
+  font-family: 'VT323', monospace;
+  font-size: 27px;
+}
+
+.word {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.letter {
+  font-family: 'VT323', monospace;
+  border-bottom: 3px solid #060930;
+  display: inline-flex;
+  font-size: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px;
+  height: 50px;
+  width: 20px;
 }

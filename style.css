@@ -2,5 +2,22 @@
 
 * {
   font-family: 'Poppins', sans-serif;
-  
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333456;
+  color: #F8F8F8;
+}
+
+.figure-container {
+  fill: transparent;
+  stroke: #F8F8F8;
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+.figure-part {
+  stroke: #f4abc4;
+  display: none;
 }

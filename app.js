@@ -11,7 +11,9 @@ const words = ["accomplish", "achievement", "commitment", "connection", "request
                "nuclear", "obviously", "physician", "phrase", "javascript", "brittle",
                "egg", "fish", "computer"];
 let selectedWord = words[Math.floor(Math.random() * words.length)];
-
+console.log("Congratulations you have found a secret! 👌");
+console.log("The hidden word is:");
+console.log(selectedWord);
 
 let correctLetters = [];
 let wrongLetters = [];
@@ -108,7 +110,8 @@ playAgainButton.addEventListener("click", () => {
 
   updateWrongLettersElement();
   popup.style.display = "none";
-
+  console.log("The hidden word is:");
+  console.log(selectedWord);
 });
 
 displayWord();

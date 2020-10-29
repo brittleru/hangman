@@ -1,6 +1,6 @@
 const wordElement = document.getElementById("word");
 const wrongLettersElement = document.getElementById("wrong-letters");
-const playAgainButton = document.getElementById("play-again");
+const playAgainButton = document.getElementById("play-button");
 const popup = document.getElementById("popup-container");
 const notification = document.getElementById("notification-container");
 const finalMessage = document.getElementById("final-message");
@@ -11,9 +11,9 @@ const words = ["accomplish", "achievement", "commitment", "connection", "request
                "nuclear", "obviously", "physician", "phrase", "javascript", "brittle",
                "egg", "fish", "computer"];
 let selectedWord = words[Math.floor(Math.random() * words.length)];
-console.log(selectedWord);
 
-let correctLetters = ["a", "e", "i", "o", "u", "g"];
+
+let correctLetters = [];
 let wrongLetters = [];
 
 // Show the hidden word
@@ -36,7 +36,29 @@ function displayWord() {
 
 // Update wrong letters array
 function updateWrongLettersElement() {
-  console.log("Update wrong");
+  // Display wrong letters
+  wrongLettersElement.innerHTML = `
+    ${wrongLetters.length > 0 ? "<p>Wrong</p>" : ""}
+    ${wrongLetters.map(letter => `<span>${letter}</span>`)}
+  `;
+
+  // Display parts of the hangman
+  figureParts.forEach((part, index) => {
+    const errors = wrongLetters.length;
+
+    if(index < errors) {
+      part.style.display = "block";
+    }
+    else {
+      part.style.display = "none";
+    }
+  });
+
+  // Lost checker
+  if (wrongLetters.length === figureParts.length) {
+    finalMessage.innerText = "Sadly you have lost...";
+    popup.style.display = "flex";
+  }
 }
 
 // Show notification message
@@ -75,6 +97,19 @@ window.addEventListener("keydown", e => {
   }
 });
 
+// Play again function
+playAgainButton.addEventListener("click", () => {
+  // Empty arrays
+  correctLetters.splice(0);
+  wrongLetters.splice(0);
+
+  selectedWord = words[Math.floor(Math.random() * words.length)];
+  displayWord();
+
+  updateWrongLettersElement();
+  popup.style.display = "none";
+
+});
 
 displayWord();
 
